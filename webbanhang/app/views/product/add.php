@@ -1,72 +1,94 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Thêm sản phẩm</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script>
-        function validateForm() {
-            let name = document.getElementById('name').value;
-            let price = document.getElementById('price').value;
-            let errors = [];
-            if (name.length < 10 || name.length > 100) {
-                errors.push('Tên sản phẩm phải có từ 10 đến 100 ký tự.');
-            }
-            if (price <= 0 || isNaN(price)) {
-                errors.push('Giá phải là một số dương lớn hơn 0.');
-            }
-            if (errors.length > 0) {
-                alert(errors.join('\n'));
-                return false;
-            }
-            return true;
-        }
-    </script>
-</head>
-<body class="bg-light">
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow">
-                    <div class="card-header bg-primary text-white text-center">
-                        <h3 class="mb-0">Thêm sản phẩm mới</h3>
-                    </div>
-                    <div class="card-body p-4">
-                        <?php if (!empty($errors)): ?>
-                            <div class="alert alert-danger">
-                                <ul class="mb-0">
-                                    <?php foreach ($errors as $error): ?>
-                                        <li><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </div>
-                        <?php endif; ?>
+<?php include 'app/views/shares/header.php'; ?>
 
-                        <form method="POST" action="/project1/Product/add" onsubmit="return validateForm();">
-                            <div class="mb-3">
-                                <label for="name" class="form-label fw-bold">Tên sản phẩm:</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            
+            <div class="card shadow border-0" style="border-radius: 12px;">
+                <div class="card-header bg-success text-white text-center py-3" style="border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                    <h3 class="fw-bold mb-0"><i class="fas fa-plus-circle me-2"></i>Thêm sản phẩm mới</h3>
+                </div>
+                
+                <div class="card-body p-4">
+                    
+                    <form action="/webbanhang/Product/save" method="POST" enctype="multipart/form-data" class="needs-validation">
+                        
+                        <div class="mb-3">
+                            <label for="name" class="form-label fw-bold text-secondary">Tên sản phẩm:</label>
+                            <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Nhập tên sản phẩm..." required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label fw-bold text-secondary">Mô tả sản phẩm:</label>
+                            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Viết mô tả ngắn về sản phẩm..." required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="price" class="form-label fw-bold text-secondary">Giá bán (VND):</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light fw-bold text-muted">💰</span>
+                                <input type="number" class="form-control form-control-lg" id="price" name="price" min="0" step="any" placeholder="Ví dụ: 150000" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="description" class="form-label fw-bold">Mô tả:</label>
-                                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="category_id" class="form-label fw-bold text-secondary">Danh mục:</label>
+                            <select class="form-select form-select-lg" id="category_id" name="category_id" required>
+                                <option value="" disabled selected>-- Chọn danh mục sản phẩm --</option>
+                                <?php if (!empty($categories)): ?>
+                                    <?php foreach ($categories as $category): ?>
+                                        <option value="<?php echo $category->id; ?>">
+                                            <?php echo htmlspecialchars($category->name, ENT_QUOTES, 'UTF-8'); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+
+                        <div class="mb-4 pb-3 border-bottom">
+                            <label for="image" class="form-label fw-bold text-secondary">Hình ảnh sản phẩm:</label>
+                            <input type="file" class="form-control" id="image" name="image" accept="image/*" onchange="previewImage(event)">
+                            
+                            <div class="text-center mt-3">
+                                <img id="image-preview" src="#" alt="Xem trước ảnh" class="img-thumbnail d-none shadow-sm" style="max-height: 180px; object-fit: cover;">
                             </div>
-                            <div class="mb-3">
-                                <label for="price" class="form-label fw-bold">Giá:</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">$</span>
-                                    <input type="number" class="form-control" id="price" name="price" step="0.01" required>
-                                </div>
-                            </div>
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
-                                <a href="/project1/Product/list" class="btn btn-outline-secondary">Quay lại danh sách</a>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+
+                        <div class="d-flex gap-3">
+                            <a href="/webbanhang/Product/list" class="btn btn-outline-secondary flex-fill py-2.5 fw-bold">
+                                <i class="fas fa-arrow-left me-1"></i> Quay lại
+                            </a>
+                            <button type="submit" class="btn btn-success flex-fill py-2.5 fw-bold shadow-sm">
+                                <i class="fas fa-save me-1"></i> Lưu sản phẩm
+                            </button>
+                        </div>
+
+                    </form>
+                    
                 </div>
             </div>
+
         </div>
     </div>
-</body>
-</html>
+</div>
+
+<script>
+    function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById('image-preview');
+        
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.classList.remove('d-none'); // Hiện thẻ img lên khi đã đọc được file
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.src = "#";
+            preview.classList.add('d-none');
+        }
+    }
+</script>
