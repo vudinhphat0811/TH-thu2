@@ -12,13 +12,13 @@
                 </div>
                 
                 <div class="card-body p-4 bg-white" style="border-radius: 12px;">
-                    <form method="POST" action="/webbanhang/Category/save">
+                    <form method="POST" action="/Category/save">
                         
                         <div class="form-group mb-4">
                             <label for="name" class="font-weight-bold text-secondary small text-uppercase">Tên danh mục:</label>
                             <input type="text" id="name" name="name" 
                                    class="form-control form-control-lg <?php echo isset($errors['name']) ? 'is-invalid' : ''; ?>" 
-                                   placeholder="Ví dụ: Điện thoại, Laptop, Phụ kiện..." style="border-radius: 8px; font-size: 0.95rem;">
+                                   placeholder="Ví dụ: Điện thoại, Laptop, Phụ kiện..." style="border-radius: 8px; font-size: 0.95rem;" required>
                             
                             <?php if (isset($errors['name'])): ?>
                                 <div class="invalid-feedback font-weight-bold"><?php echo $errors['name']; ?></div>
@@ -32,8 +32,8 @@
                         </div>
 
                         <div class="d-flex align-items-center justify-content-between pt-3 border-top">
-                            <a href="/webbanhang/Product/" class="text-decoration-none text-muted small font-weight-bold">
-                                <i class="fas fa-arrow-left mr-1"></i> Quay lại kho hàng
+                            <a href="/Category/list" class="text-decoration-none text-muted small font-weight-bold hover-back">
+                                <i class="fas fa-arrow-left mr-1"></i> Quay lại danh sách
                             </a>
                             <button type="submit" class="btn btn-success px-4 py-2 font-weight-bold shadow-sm" style="border-radius: 8px; font-size: 0.95rem;">
                                 LƯU DANH MỤC
@@ -53,6 +53,10 @@
     .form-control:focus {
         box-shadow: none;
         border-color: #28a745;
+    }
+    .hover-back:hover {
+        color: #dc3545 !important;
+        transition: color 0.2s ease-in-out;
     }
 </style>
 

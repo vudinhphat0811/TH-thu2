@@ -11,7 +11,7 @@
                 
                 <div class="card-body p-4 p-lg-5">
                     
-                    <form action="/webbanhang/Product/update" method="POST" enctype="multipart/form-data">
+                    <form action="/Product/update" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?php echo $product->id; ?>">
                         
                         <input type="hidden" name="existing_image" value="<?php echo $product->image; ?>">
@@ -55,10 +55,10 @@
                                 <div class="col-md-4 mb-3 mb-md-0">
                                     <p class="small text-muted mb-2">Ảnh hiện tại:</p>
                                     <?php if (!empty($product->image)): ?>
-                                        <img src="http://localhost:8080/webbanhang/<?php echo htmlspecialchars($product->image, ENT_QUOTES, 'UTF-8'); ?>" 
+                                        <img src="/<?php echo htmlspecialchars($product->image, ENT_QUOTES, 'UTF-8'); ?>" 
                                              class="img-thumbnail shadow-sm" style="height: 120px; width: 100%; object-fit: cover;">
                                     <?php else: ?>
-                                        <img src="http://localhost:8080/webbanhang/images/no-image.png" class="img-thumbnail opacity-50" style="height: 120px;">
+                                        <img src="/images/no-image.png" class="img-thumbnail opacity-50" style="height: 120px;">
                                     <?php endif; ?>
                                 </div>
 
@@ -75,7 +75,7 @@
                         </div>
 
                         <div class="d-flex gap-3 pt-3">
-                            <a href="/webbanhang/Product/list" class="btn btn-outline-secondary flex-fill py-2.5 fw-bold">
+                            <a href="/Product/list" class="btn btn-outline-secondary flex-fill py-2.5 fw-bold">
                                 <i class="fas fa-times me-1"></i> Hủy bỏ
                             </a>
                             <button type="submit" class="btn btn-warning flex-fill py-2.5 fw-bold shadow-sm">
@@ -114,8 +114,5 @@
 </script>
 
 <style>
-    .form-control:focus, .form-select:focus {
-        border-color: #ffc107;
-        box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
-    }
+    .form-control:focus, .form-select:focus { border-color: #ffc107; box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25); }
 </style>

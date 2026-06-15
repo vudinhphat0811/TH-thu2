@@ -11,7 +11,7 @@
                 
                 <div class="card-body p-4">
                     
-                    <form action="/webbanhang/Product/save" method="POST" enctype="multipart/form-data" class="needs-validation">
+                    <form action="/Product/save" method="POST" enctype="multipart/form-data" class="needs-validation">
                         
                         <div class="mb-3">
                             <label for="name" class="form-label fw-bold text-secondary">Tên sản phẩm:</label>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="d-flex gap-3">
-                            <a href="/webbanhang/Product/list" class="btn btn-outline-secondary flex-fill py-2.5 fw-bold">
+                            <a href="/Product/list" class="btn btn-outline-secondary flex-fill py-2.5 fw-bold">
                                 <i class="fas fa-arrow-left me-1"></i> Quay lại
                             </a>
                             <button type="submit" class="btn btn-success flex-fill py-2.5 fw-bold shadow-sm">
@@ -82,7 +82,7 @@
             
             reader.onload = function(e) {
                 preview.src = e.target.result;
-                preview.classList.remove('d-none'); // Hiện thẻ img lên khi đã đọc được file
+                preview.classList.remove('d-none');
             }
             
             reader.readAsDataURL(input.files[0]);

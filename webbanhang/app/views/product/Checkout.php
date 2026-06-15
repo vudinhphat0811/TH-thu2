@@ -8,7 +8,7 @@
                     <h4 class="fw-bold text-dark mb-0"><i class="fas fa-shipping-fast text-primary mr-2"></i>Thông tin giao hàng</h4>
                 </div>
                 <div class="card-body p-4">
-                    <form method="POST" action="/webbanhang/Product/processCheckout" id="checkout-form">
+                    <form method="POST" action="/Product/processCheckout" id="checkout-form">
                         <div class="form-group mb-4">
                             <label for="name" class="font-weight-bold text-secondary">Họ và tên người nhận:</label>
                             <div class="input-group">
@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="d-flex align-items-center justify-content-between mt-4">
-                            <a href="/webbanhang/Product/cart" class="text-decoration-none text-muted font-weight-bold">
+                            <a href="/Product/cart" class="text-decoration-none text-muted font-weight-bold">
                                 <i class="fas fa-chevron-left mr-1"></i> Quay lại giỏ hàng
                             </a>
                             <button type="submit" class="btn btn-primary btn-lg px-5 shadow-sm font-weight-bold" style="border-radius: 8px;">
@@ -78,9 +78,9 @@
                                 <div class="position-relative">
                                     <div class="bg-white border rounded overflow-hidden d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
                                         <?php if (!empty($item['image'])): ?>
-                                            <img src="/webbanhang/<?php echo htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8'); ?>" class="img-fluid object-fit-cover w-100 h-100">
+                                            <img src="/<?php echo htmlspecialchars($item['image'], ENT_QUOTES, 'UTF-8'); ?>" class="img-fluid object-fit-cover w-100 h-100">
                                         <?php else: ?>
-                                            <img src="/webbanhang/images/no-image.png" class="img-fluid opacity-40" style="max-height: 30px;">
+                                            <img src="/images/no-image.png" class="img-fluid opacity-40" style="max-height: 30px;">
                                         <?php endif; ?>
                                     </div>
                                     <span class="badge badge-secondary badge-pill position-absolute" style="top: -10px; right: -10px; border: 2px solid #f8f9fa;">
@@ -127,11 +127,7 @@
 <style>
     .object-fit-cover { object-fit: cover; }
     .input-group-text { border-color: #ced4da; }
-    .form-control:focus {
-        box-shadow: none;
-        border-color: #007bff;
-    }
-    /* Tùy chỉnh thanh cuộn cho danh sách sản phẩm tóm tắt */
+    .form-control:focus { border-color: #007bff; box-shadow: none; }
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #f1f1f1; }
     ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }

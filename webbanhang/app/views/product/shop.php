@@ -17,7 +17,7 @@
                         <i class="fas fa-th-large me-2 text-primary"></i>Danh Mục Sản Phẩm
                     </h5>
                     <div class="list-group list-group-flush gap-1">
-                        <a href="/webbanhang/Product/shop" class="list-group-item list-group-item-action border-0 rounded <?php echo empty($_GET['category_id']) ? 'active' : ''; ?> px-3 py-2.5">
+                        <a href="/Product/shop" class="list-group-item list-group-item-action border-0 rounded <?php echo empty($_GET['category_id']) ? 'active' : ''; ?> px-3 py-2.5">
                             <i class="fas fa-border-all me-2"></i>Tất cả sản phẩm
                         </a>
                         
@@ -27,7 +27,7 @@
                                     $isActive = (isset($_GET['category_id']) && $_GET['category_id'] == $cat->id) ? 'active' : ''; 
                                     $textClass = (isset($_GET['category_id']) && $_GET['category_id'] == $cat->id) ? '' : 'text-muted'; 
                                 ?>
-                                <a href="/webbanhang/Product/shop?category_id=<?php echo $cat->id; ?>" 
+                                <a href="/Product/shop?category_id=<?php echo $cat->id; ?>" 
                                    class="list-group-item list-group-item-action border-0 rounded px-3 py-2.5 <?php echo $isActive . ' ' . $textClass; ?> hover-sidebar">
                                     <i class="fas fa-chevron-right small me-2 opacity-50"></i>
                                     <?php echo htmlspecialchars($cat->name, ENT_QUOTES, 'UTF-8'); ?>
@@ -43,7 +43,7 @@
             
             <div class="card border-0 shadow-sm mb-4" style="border-radius: 10px;">
                 <div class="card-body p-3 bg-white" style="border-radius: 10px;">
-                    <form method="GET" action="/webbanhang/Product/shop" class="row g-2 align-items-center">
+                    <form method="GET" action="/Product/shop" class="row g-2 align-items-center">
                         <div class="col-md-9">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -72,7 +72,7 @@
                 </span>
                 
                 <?php if(!empty($_GET['category_id']) || !empty($_GET['search'])): ?>
-                    <a href="/webbanhang/Product/shop" class="btn btn-sm btn-outline-secondary font-weight-bold bg-white px-3" style="border-radius: 6px;">
+                    <a href="/Product/shop" class="btn btn-sm btn-outline-secondary font-weight-bold bg-white px-3" style="border-radius: 6px;">
                         <i class="fas fa-times-circle mr-1"></i> Xóa bộ lọc
                     </a>
                 <?php endif; ?>
@@ -88,11 +88,11 @@
                                     <span class="badge bg-danger position-absolute top-0 start-0 m-3 px-2.5 py-1.5 fw-bold shadow-sm">Trả góp 0%</span>
                                     
                                     <?php if (!empty($product->image)): ?>
-                                        <img src="http://localhost:8080/webbanhang/<?php echo htmlspecialchars($product->image, ENT_QUOTES, 'UTF-8'); ?>" 
+                                        <img src="/<?php echo htmlspecialchars($product->image, ENT_QUOTES, 'UTF-8'); ?>" 
                                              alt="<?php echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8'); ?>" 
                                              class="img-fluid w-100 h-100 object-fit-cover product-img">
                                     <?php else: ?>
-                                        <img src="http://localhost:8080/webbanhang/images/no-image.png" 
+                                        <img src="/images/no-image.png" 
                                              alt="Không có ảnh" class="img-fluid opacity-40" style="max-height: 120px;">
                                     <?php endif; ?>
                                 </div>
@@ -103,7 +103,7 @@
                                     </p>
                                     
                                     <h5 class="card-title fw-bold mb-2">
-                                        <a href="/webbanhang/Product/show/<?php echo $product->id; ?>" class="text-decoration-none text-dark hover-success text-truncate-2" style="min-height: 48px;">
+                                        <a href="/Product/show/<?php echo $product->id; ?>" class="text-decoration-none text-dark hover-success text-truncate-2" style="min-height: 48px;">
                                             <?php echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8'); ?>
                                         </a>
                                     </h5>
@@ -119,10 +119,10 @@
                                     </div>
                                     
                                     <div class="d-flex gap-2">
-                                        <a href="/webbanhang/Product/addToCart/<?php echo $product->id; ?>" class="btn btn-primary flex-fill py-2 d-flex align-items-center justify-content-center gap-1 hover-scale font-weight-bold btn-custom-sm" title="Thêm vào giỏ">
+                                        <a href="/Product/addToCart/<?php echo $product->id; ?>" class="btn btn-primary flex-fill py-2 d-flex align-items-center justify-content-center gap-1 hover-scale font-weight-bold btn-custom-sm" title="Thêm vào giỏ">
                                             <i class="fas fa-cart-plus"></i> <span class="d-none d-sm-inline">Thêm giỏ</span>
                                         </a>
-                                        <a href="/webbanhang/Product/buyNow/<?php echo $product->id; ?>" class="btn btn-danger flex-fill py-2 d-flex align-items-center justify-content-center gap-1 hover-scale font-weight-bold btn-custom-sm" title="Mua trực tiếp luôn">
+                                        <a href="/Product/buyNow/<?php echo $product->id; ?>" class="btn btn-danger flex-fill py-2 d-flex align-items-center justify-content-center gap-1 hover-scale font-weight-bold btn-custom-sm" title="Mua trực tiếp luôn">
                                             <i class="fas fa-bolt"></i> <span>Mua ngay</span>
                                         </a>
                                     </div>

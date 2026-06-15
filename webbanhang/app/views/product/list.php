@@ -7,10 +7,10 @@
             <p class="text-muted small mb-0">Quản lý, theo dõi thông tin và cập nhật trạng thái các sản phẩm trong hệ thống</p>
         </div>
         <div class="mt-3 mt-md-0 d-flex gap-2">
-            <a href="/webbanhang/Category/add" class="btn btn-info px-4 py-2 font-weight-bold d-inline-flex align-items-center btn-modern shadow-sm mr-2">
+            <a href="/Category/add" class="btn btn-info px-4 py-2 font-weight-bold d-inline-flex align-items-center btn-modern shadow-sm mr-2">
                 <i class="fas fa-folder-plus mr-2"></i> Thêm danh mục
             </a>
-            <a href="/webbanhang/Product/add" class="btn btn-success px-4 py-2 font-weight-bold d-inline-flex align-items-center btn-modern shadow-sm">
+            <a href="/Product/add" class="btn btn-success px-4 py-2 font-weight-bold d-inline-flex align-items-center btn-modern shadow-sm">
                 <i class="fas fa-plus mr-2"></i> Thêm sản phẩm mới
             </a>
         </div>
@@ -39,7 +39,7 @@
                     </div>
                     <div>
                         <span class="text-muted small font-weight-bold text-uppercase">Phân loại hàng</span>
-                        <h6 class="font-weight-bold mb-0 mt-1"><a href="/webbanhang/Category/add" class="text-info text-decoration-none">Cài đặt danh mục <i class="fas fa-arrow-right small ml-1"></i></a></h6>
+                        <h6 class="font-weight-bold mb-0 mt-1"><a href="/Category/add" class="text-info text-decoration-none">Cài đặt danh mục <i class="fas fa-arrow-right small ml-1"></i></a></h6>
                     </div>
                 </div>
             </div>
@@ -66,11 +66,11 @@
                                     <td class="px-4 py-3">
                                         <div class="bg-light rounded overflow-hidden d-flex align-items-center justify-content-center border" style="width: 60px; height: 60px;">
                                             <?php if (!empty($product->image)): ?>
-                                                <img src="http://localhost:8080/webbanhang/<?php echo htmlspecialchars($product->image, ENT_QUOTES, 'UTF-8'); ?>" 
+                                                <img src="/<?php echo htmlspecialchars($product->image, ENT_QUOTES, 'UTF-8'); ?>" 
                                                      alt="<?php echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8'); ?>" 
                                                      class="img-fluid object-fit-cover w-100 h-100">
                                             <?php else: ?>
-                                                <img src="http://localhost:8080/webbanhang/images/no-image.png" 
+                                                <img src="/images/no-image.png" 
                                                      alt="No-image" class="img-fluid opacity-40" style="max-height: 35px;">
                                             <?php endif; ?>
                                         </div>
@@ -78,7 +78,7 @@
 
                                     <td class="py-3">
                                         <h6 class="font-weight-bold text-dark mb-1">
-                                            <a href="/webbanhang/Product/show/<?php echo $product->id; ?>" class="text-decoration-none text-dark hover-blue">
+                                            <a href="/Product/show/<?php echo $product->id; ?>" class="text-decoration-none text-dark hover-blue">
                                                 <?php echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8'); ?>
                                             </a>
                                         </h6>
@@ -99,13 +99,13 @@
 
                                     <td class="text-center py-3 px-4">
                                         <div class="d-flex justify-content-center gap-2">
-                                            <a href="/webbanhang/Product/show/<?php echo $product->id; ?>" class="btn btn-sm btn-light text-muted border action-btn mr-1" title="Xem chi tiết">
+                                            <a href="/Product/show/<?php echo $product->id; ?>" class="btn btn-sm btn-light text-muted border action-btn mr-1" title="Xem chi tiết">
                                                 <i class="fas fa-eye text-primary"></i>
                                             </a>
-                                            <a href="/webbanhang/Product/edit/<?php echo $product->id; ?>" class="btn btn-sm btn-light text-muted border action-btn mr-1" title="Chỉnh sửa">
+                                            <a href="/Product/edit/<?php echo $product->id; ?>" class="btn btn-sm btn-light text-muted border action-btn mr-1" title="Chỉnh sửa">
                                                 <i class="fas fa-pen text-warning"></i>
                                             </a>
-                                            <a href="/webbanhang/Product/delete/<?php echo $product->id; ?>" 
+                                            <a href="/Product/delete/<?php echo $product->id; ?>" 
                                                class="btn btn-sm btn-light text-muted border action-btn" 
                                                title="Xóa sản phẩm"
                                                onclick="return confirm('Hệ thống sẽ xóa vĩnh viễn sản phẩm [<?php echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8'); ?>]. Bạn có chắc chắn không?');">
@@ -133,36 +133,11 @@
     .bg-white { background-color: #ffffff !important; }
     .object-fit-cover { object-fit: cover; }
     .table-align-middle td, .table-align-middle th { vertical-align: middle !important; }
-    
-    .badge-soft-info {
-        background-color: rgba(23, 162, 184, 0.1) !important;
-        color: #17a2b8 !important;
-        border: 1px solid rgba(23, 162, 184, 0.15);
-    }
-    
-    .action-btn {
-        width: 32px;
-        height: 32px;
-        padding: 0 !important;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 6px !important;
-        background-color: #ffffff !important;
-        transition: all 0.15s ease-in-out;
-    }
-    .action-btn:hover {
-        background-color: #f8f9fa !important;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        transform: translateY(-1px);
-    }
-    
-    .hover-blue:hover {
-        color: #007bff !important;
-    }
-    .btn-modern {
-        border-radius: 6px !important;
-    }
+    .badge-soft-info { background-color: rgba(23, 162, 184, 0.1) !important; color: #17a2b8 !important; border: 1px solid rgba(23, 162, 184, 0.15); }
+    .action-btn { width: 32px; height: 32px; padding: 0 !important; display: inline-flex; align-items: center; justify-content: center; border-radius: 6px !important; background-color: #ffffff !important; transition: all 0.15s ease-in-out; }
+    .action-btn:hover { background-color: #f8f9fa !important; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transform: translateY(-1px); }
+    .hover-blue:hover { color: #007bff !important; }
+    .btn-modern { border-radius: 6px !important; }
 </style>
 
 <?php include 'app/views/shares/footer.php'; ?>

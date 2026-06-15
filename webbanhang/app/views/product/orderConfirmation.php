@@ -27,7 +27,7 @@
                     </div>
                     
                     <div class="d-flex flex-column flex-sm-row justify-content-center gap-2 mt-4">
-                        <a href="/webbanhang/Product/shop" class="btn btn-success btn-lg px-4 py-2.5 font-weight-bold shadow-sm" style="border-radius: 8px; font-size: 1rem;">
+                        <a href="/Product/shop" class="btn btn-success btn-lg px-4 py-2.5 font-weight-bold shadow-sm" style="border-radius: 8px; font-size: 1rem;">
                             <i class="fas fa-shopping-bag mr-2"></i>Tiếp tục mua sắm
                         </a>
                     </div>
@@ -40,18 +40,8 @@
 </div>
 
 <style>
-    /* Hiệu ứng nảy nhẹ cho Icon thêm phần sinh động */
-    .animate-bounce {
-        animation: bounce 2s infinite;
-    }
-    @keyframes bounce {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-8px);
-        }
-    }
+    .animate-bounce { animation: bounce 2s infinite; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 </style>
 
 <?php include 'app/views/shares/footer.php'; ?>

@@ -40,16 +40,16 @@ class CategoryController
                 $errors = $result;
                 include 'app/views/category/add.php';
             } else {
-
-                header('Location: /webbanhang/Category/list');
+                // ĐÃ SỬA: Bỏ /webbanhang
+                header('Location: /Category/list');
             }
         }
     }
     public function delete($id)
     {
         if ($this->categoryModel->deleteCategory($id)) {
-            // Xóa thành công thì chuyển hướng về trang danh sách danh mục để cập nhật giao diện
-            header('Location: /webbanhang/Category/list');
+            // ĐÃ SỬA: Bỏ /webbanhang
+            header('Location: /Category/list');
         } else {
             echo "Đã xảy ra lỗi khi xóa danh mục.";
         }

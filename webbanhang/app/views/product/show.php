@@ -10,9 +10,9 @@
                 <div class="row">
                     <div class="col-md-6 text-center">
                         <?php if (!empty($product->image)): ?>
-                            <img src="http://localhost:8080/<?php echo htmlspecialchars($product->image, ENT_QUOTES, 'UTF-8'); ?>" class="img-fluid rounded" alt="<?php echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8'); ?>">
+                            <img src="/<?php echo htmlspecialchars($product->image, ENT_QUOTES, 'UTF-8'); ?>" class="img-fluid rounded" alt="<?php echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8'); ?>">
                         <?php else: ?>
-                            <img src="http://localhost:8080/images/no-image.png" class="img-fluid rounded" alt="Không có ảnh">
+                            <img src="/images/no-image.png" class="img-fluid rounded" alt="Không có ảnh">
                         <?php endif; ?>
                     </div>
                     <div class="col-md-6">
